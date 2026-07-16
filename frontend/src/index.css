@@ -1,0 +1,51 @@
+/* Small tweaks on top of Bootstrap — nothing heavy */
+
+body {
+  background-color: #f5f7fa;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* Slot cards */
+.slot-card {
+  transition: box-shadow 0.15s ease;
+  border-left: 4px solid transparent;
+}
+
+.slot-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slot-card.available {
+  border-left-color: #198754;
+}
+
+.slot-card.booked {
+  border-left-color: #dc3545;
+  opacity: 0.75;
+}
+
+/* Toast container */
+.toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+}
+
+/* Loading spinner center */
+.spinner-center {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+/* Page header */
+.page-header {
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+}
