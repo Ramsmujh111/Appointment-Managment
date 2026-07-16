@@ -9,6 +9,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({ email: '', password: '' });
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -65,15 +66,24 @@ export default function LoginPage() {
 
                 <div className="mb-3">
                   <label className="form-label" htmlFor="password">Password</label>
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    className="form-control"
-                    value={form.password}
-                    onChange={handleChange}
-                    required
-                  />
+                  <div className="input-group">
+                    <input
+                      id="password"
+                      name="password"
+                      type={showPassword ? 'text' : 'password'}
+                      className="form-control"
+                      value={form.password}
+                      onChange={handleChange}
+                      required
+                    />
+                    <button
+                      className="btn btn-outline-secondary"
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      <i className={`bi bi-eye${showPassword ? '-slash' : ''}`} />
+                    </button>
+                  </div>
                 </div>
 
                 <button

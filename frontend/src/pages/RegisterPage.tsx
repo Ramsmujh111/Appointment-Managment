@@ -9,6 +9,7 @@ export default function RegisterPage() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -86,15 +87,24 @@ export default function RegisterPage() {
                     Password
                     <span className="text-muted small ms-1">(min 6 characters)</span>
                   </label>
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    className="form-control"
-                    value={form.password}
-                    onChange={handleChange}
-                    required
-                  />
+                  <div className="input-group">
+                    <input
+                      id="password"
+                      name="password"
+                      type={showPassword ? 'text' : 'password'}
+                      className="form-control"
+                      value={form.password}
+                      onChange={handleChange}
+                      required
+                    />
+                    <button
+                      className="btn btn-outline-secondary"
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      <i className={`bi bi-eye${showPassword ? '-slash' : ''}`} />
+                    </button>
+                  </div>
                 </div>
 
                 <button
