@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
 
-  # ── PostgreSQL database ────────────────────────────────────────────────────
   postgres:
     image: postgres:16-alpine
     container_name: appointment_db
@@ -21,7 +20,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # ── Node.js / Express backend ──────────────────────────────────────────────
   backend:
     build:
       context: ./backend
@@ -44,7 +42,6 @@ services:
       - '3000:3000'
     # no .env file needed — env vars are injected above
 
-    # ── React frontend (nginx) ─────────────────────────────────────────────────
   frontend:
     build:
       context: ./frontend
