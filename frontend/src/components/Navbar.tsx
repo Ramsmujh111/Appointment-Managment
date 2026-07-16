@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className="container">
         <Link className="navbar-brand" to="/">
           <i className="bi bi-calendar-check me-2" />
-          AppointmentBook
+          Appointment Book
         </Link>
 
         <button
