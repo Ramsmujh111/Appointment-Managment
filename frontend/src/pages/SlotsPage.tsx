@@ -14,8 +14,20 @@ export default function SlotsPage() {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
 
+  // Format today's local date as YYYY-MM-DD
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const minDateStr = `${yyyy}-${mm}-${dd}`;
+
   function handleDateChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setDateFilter(e.target.value);
+    const selectedDate = e.target.value;
+    if (selectedDate && selectedDate < minDateStr) {
+      toast.warning('Cannot choose a past date');
+      return;
+    }
+    setDateFilter(selectedDate);
     setPage(1);
   }
 
@@ -40,6 +52,7 @@ export default function SlotsPage() {
             className="form-control form-control-sm"
             value={dateFilter}
             onChange={handleDateChange}
+            min={minDateStr}
             style={{ width: 160 }}
           />
           {dateFilter && (
